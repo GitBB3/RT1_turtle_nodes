@@ -12,7 +12,7 @@ Package of 2 nodes in C++ (Python folder "/script" is work in progress):
 - stops a turtle if it is too close to a boundary of the environment.
 
 
-## How to use
+## Run the nodes
 
 ### Lauchfile (bêta)
 Run in 2 different terminals:
@@ -24,15 +24,21 @@ Run in 2 different terminals:
 2) rosrun assignment1_rt UI
 3) rosrun assignment1_rt Distance
 
+## Move the turtles
+
 #### The terminal for UI should display the following:
 - "Which one do you want to move ? turtle1 or turtle2:"
+  
 (write turtle1 or turtle2)
 - "Choose the speed {Vx, Vy, Wz}:"
 - "Vx:"
+  
 (write the linear speed along x)
 - "Vy:"
+  
 (write the linear speed along y)
 - "Wz:"
+  
 (write the angular speed with respect to z)
 
 #### The terminal for Distance:

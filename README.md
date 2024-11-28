@@ -14,12 +14,12 @@ Package of 2 nodes in C++ (Python folder "/script" is work in progress):
 
 ## Run the nodes
 
-### Lauchfile (bêta)
+### Option A) Lauchfile (bêta)
 Run in 2 different terminals:
 - roslaunch assignment1_rt assignment1_rt.launch
 - rosrun assignment1_rt Distance (should be integrated in the launchfile - and run correctly)
 
-### Run the files one by one in different terminals
+### Option B) Run the files one by one in different terminals
 1) rosrun turtlesim turtlesim_node
 2) rosrun assignment1_rt UI
 3) rosrun assignment1_rt Distance
@@ -40,6 +40,7 @@ Run in 2 different terminals:
 - "Wz:"
   
 (write the angular speed with respect to z)
+
 
 #### The terminal for Distance:
 Shows the distance between the turtles continuously, spawns Warning message "Turtle x: Collision risk!" if there is a risk of collision of turtle x with the other turtle, or with the wall.

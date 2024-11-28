@@ -1,0 +1,5 @@
+<launch>
+	<node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" requested="True" output="screen" />
+	<node name="UI" pkg="assignment1_rt" type="UI" requested="True" output="screen" />
+	<node name="Distance" pkg="assignment1_rt" type="Distance" output="screen" launch-prefix="terminator -x" />
+</launch>

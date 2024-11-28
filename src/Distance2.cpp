@@ -26,7 +26,7 @@ void turtle1Callback(const turtlesim::Pose::ConstPtr& msg)
 	dx = abs(pose_turtle2.x - pose_turtle1.x);
 	dy = abs(pose_turtle2.y - pose_turtle1.y);
 	dist_cart = sqrt(dx*dx + dy*dy);
-	ROS_INFO("Distance@[%f]", dist_cart);
+	//ROS_INFO("Distance@[%f]", dist_cart);
 	
 	if (dist_cart < THR || msg->x > 10.0 || msg->x <= 0.0 || msg->y > 10.0 || msg->y <= 0.0){
 	my_vel1.linear.x = 0.0;
@@ -35,7 +35,6 @@ void turtle1Callback(const turtlesim::Pose::ConstPtr& msg)
 	pose_turtle1.y = y1_mem;
 	ROS_WARN("Turtle1: Collision Risk!");
 	pub_turtle1.publish(my_vel1);
-	//sleep(1);
 	}
 	
 	x1_mem = pose_turtle1.x;
@@ -57,7 +56,7 @@ void turtle2Callback(const turtlesim::Pose::ConstPtr& msg)
 	dx = abs(pose_turtle2.x - pose_turtle1.x);
 	dy = abs(pose_turtle2.y - pose_turtle1.y);
 	dist_cart = sqrt(dx*dx + dy*dy);
-	ROS_INFO("Distance@[%f]", dist_cart);
+	//ROS_INFO("Distance@[%f]", dist_cart);
 	
 	if (dist_cart < THR || msg->x > 10.0 || msg->x <= 0.0 || msg->y > 10.0 || msg->y <= 0.0){
 	my_vel2.linear.x = 0.0;
@@ -66,7 +65,6 @@ void turtle2Callback(const turtlesim::Pose::ConstPtr& msg)
 	pose_turtle2.y = y2_mem;
 	ROS_WARN("Turtle2: Collision Risk!");
 	pub_turtle2.publish(my_vel2);
-	//sleep(1);
 		}
 	
 	x2_mem = pose_turtle2.x;
@@ -79,7 +77,10 @@ void turtle2Callback(const turtlesim::Pose::ConstPtr& msg)
 	
 }
 
-
+void infoDist(const std_msgs::Float32::ConstPtr& dist){
+	ROS_INFO("Distance@[%f]", dist->data);
+	sleep(1);
+}
 
 int main(int argc, char **argv){
 	ros::init(argc, argv, "turtlebot_distance");  
@@ -93,7 +94,7 @@ int main(int argc, char **argv){
 	ros::Subscriber sub_turtle2 = nh.subscribe("turtle2/pose", 1, turtle2Callback);
 	// pub distance
 	pub_dist = nh.advertise<std_msgs::Float32>("dist_msg", 1);
-	
+	ros::Subscriber sub_dist = nh.subscribe("dist_msg", 1, infoDist);
 	
 	sleep(1);
 	ros::spin();
